@@ -25,3 +25,4 @@ repos:
     hooks:
       - id: toml-sort
         files: ^pyproject\.toml$
+        args: ["--all"]  # 自动排序所有键
