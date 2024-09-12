@@ -19,3 +19,9 @@ repos:
     hooks:
       - id: isort
         stages: [commit, push]  # 在 commit 和 push 时运行 isort
+
+  - repo: https://github.com/pappasam/toml-sort
+    rev: v0.23.1
+    hooks:
+      - id: toml-sort
+        files: ^pyproject\.toml$
