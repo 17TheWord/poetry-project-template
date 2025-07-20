@@ -10,10 +10,8 @@ readme = "README.md"
 python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = "^3.8.0"
-isort = "^5.13.2"
-ruff = "^0.6.4"
-toml-sort = "^0.23.1"
+ruff = "^0.12.4"
+pre-commit = "^4.2.0"
 
 [tool.isort]
 profile = "black"
@@ -25,13 +23,45 @@ extra_standard_library = ["typing_extensions"]
 
 [tool.ruff]
 line-length = 88
-target-version = "py39"
+target-version = "py310"
 
 [tool.ruff.lint]
-ignore = []
+select = [
+    "F",     # Pyflakes
+    "W",     # pycodestyle warnings
+    "E",     # pycodestyle errors
+    "I",     # isort
+    "UP",    # pyupgrade
+    "ASYNC", # flake8-async
+    "C4",    # flake8-comprehensions
+    "T10",   # flake8-debugger
+    "T20",   # flake8-print
+    "PYI",   # flake8-pyi
+    "PT",    # flake8-pytest-style
+    "Q",     # flake8-quotes
+    "RUF",   # Ruff-specific rules
+]
+ignore = [
+    "E402",
+    "E501",   # module-import-not-at-top-of-file
+    "UP037",  # quoted-annotation
+    "RUF001", # ambiguous-unicode-character-string
+    "RUF002", # ambiguous-unicode-character-docstring
+    "RUF003", # ambiguous-unicode-character-comment
+]
 
-[tool.tomlsort]
-all = true
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+extra-standard-library = ["typing_extensions"]
 
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
